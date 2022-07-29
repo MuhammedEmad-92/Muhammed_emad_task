@@ -1,0 +1,22 @@
+version: "3"
+services:
+  mysql-standalone:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=sa
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+
+  spring_boot:
+    image: muhammed_emad_task_my_sql:latest
+    ports:
+      - 8086:8082
+    restart: unless-stopped
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-standalone

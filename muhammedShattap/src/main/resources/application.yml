@@ -1,0 +1,35 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: derby
+
+---
+
+spring:
+  profiles: derby
+  datasource:
+    driver-class-name: org.apache.derby.jdbc.ClientDriver
+    password: 123
+    url: jdbc:derby://localhost:1527/Deals
+    username: muhammed
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+---
+
+spring:
+  profiles: mysql
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://mysql-standalone:3306/test
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
